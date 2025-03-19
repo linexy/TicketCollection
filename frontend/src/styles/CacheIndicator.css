@@ -1,0 +1,50 @@
+/* 缓存指示器样式 */
+.cache-indicator {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.cache-indicator.cached {
+  color: #2ecc71;
+}
+
+.cache-indicator.not-cached {
+  color: #95a5a6;
+}
+
+/* 详细缓存指示器 */
+.cache-indicator-details {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.cache-indicator-details.cached {
+  background-color: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.cache-indicator-details.not-cached {
+  background-color: rgba(149, 165, 166, 0.1);
+  border: 1px solid rgba(149, 165, 166, 0.3);
+}
+
+.cache-icon {
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.cache-text {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.cache-expiry {
+  color: #7f8c8d;
+  font-size: 13px;
+} 

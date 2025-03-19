@@ -1,0 +1,485 @@
+.station-stops-overlay {
+  display: none;
+}
+
+.station-stops-container {
+  background-color: white;
+  border-radius: 12px;
+  width: 84%;
+  max-width: 320px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.station-stops-header {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+}
+
+.station-stops-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+  line-height: 1;
+}
+
+.loading-container, .error-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 12306风格的列车时刻表 */
+.train-timetable {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.train-info {
+  padding: 15px;
+  background-color: #0078ff;
+  color: white;
+  text-align: center;
+}
+
+.train-number {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.journey-route {
+  font-size: 14px;
+}
+
+.timetable-content {
+  padding: 15px;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.timetable-header {
+  display: flex;
+  background-color: #3D97F9;
+  padding: 10px 15px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #fff;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 0;
+}
+
+.header-cell {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.station-stop-header {
+  flex: 1.2;
+  text-align: left;
+  padding-left: 15px;
+}
+
+
+.header-cell.stopover-cell {
+  flex: 1;
+  text-align: right;
+}
+
+.station-cell {
+  flex: 1.5;
+  position: relative;
+  padding: 0 15px 0 30px;
+  text-align: center;
+}
+
+.stopover-cell {
+  flex: 0.8;
+}
+
+.stops-list {
+  overflow-y: auto;
+  flex: 1;
+  max-height: 60vh;
+}
+
+.timetable-row {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 0;
+  align-items: center;
+}
+
+.timetable-row:last-child {
+  border-bottom: none;
+}
+
+.journey-range {
+  background-color: #e6f7ff;
+  border-left: 3px solid #333;
+}
+
+.highlighted-row {
+  display: none;
+}
+
+.timetable-cell {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+}
+
+.station-no {
+  position: absolute;
+  left: 10px;
+  font-size: 14px;
+}
+
+.stops-station-name {
+  display: inline-block;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.departure-station, .arrival-station {
+  color: #333;
+}
+
+.journey-station-name {
+  color: #333;
+}
+
+.journey-text {
+  color: #333;
+}
+
+.time-cell {
+  font-family: 'Roboto Mono', monospace, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+}
+
+.station-tag {
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: white;
+
+}
+
+.start-tag {
+  background-color: #3D97F9;
+}
+
+.end-tag {
+  background-color: #f5222d;
+}
+
+.timetable-footer {
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #eee;
+  background-color: #007BFD;
+  border-top: 1px solid #eee;
+}
+
+/* 站点标题样式 */
+.station-title {
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* 站点行样式 */
+.station-time-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  padding: 2px 0;
+}
+
+.station-stops-name {
+  font-size: 12px;
+  font-weight: normal;
+  color: #999;
+  flex: 1.2;
+  min-width: 50px;
+  margin-right: 10px;
+}
+
+/* 当前行程站点样式 */
+.journey-station {
+  color: #3D97F9 !important;
+  font-weight: 500;
+}
+
+.journey-text {
+  color: #3D97F9 !important;
+}
+
+/* 中间站点样式 */
+.intermediate-station {
+  color: #333;
+  font-weight: 500;
+}
+
+.intermediate-text {
+  color: #333 !important;
+}
+
+/* 时间信息样式 */
+.station-times {
+  display: flex;
+  flex: 3;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time-item {
+  font-family: 'Roboto Mono', monospace, sans-serif;
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  font-weight: 400;
+  flex: 1;
+  padding: 0 2px;
+}
+
+.time-item.arrive {
+  text-align: center;
+}
+
+.time-item.depart {
+  text-align: center;
+}
+
+.time-item.stopover {
+  text-align: right;
+  font-size: 12px;
+}
+
+/* 覆盖TDesign默认样式 */
+.t-steps-item--vertical.t-steps-item--dot {
+  padding-bottom: 0;
+}
+
+.t-steps-item__dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+}
+
+.t-steps-item--finish .t-steps-item__dot,
+.t-steps-item--process .t-steps-item__dot {
+  background-color: #0052d9;
+  width: 8px;
+  height: 8px;
+}
+
+.t-steps-item__line {
+  background-color: #eee;
+  width: 1px;
+}
+
+.t-steps-item--finish .t-steps-item__line,
+.t-steps-item--process .t-steps-item__line {
+  background-color: #0052d9;
+  width: 1px;
+}
+
+.t-steps {
+  padding: 0 10px;
+}
+
+.t-steps-item__title {
+  line-height: 1.2;
+}
+
+/* 适配小屏幕 */
+@media (max-width: 480px) {
+  .station-stops-container {
+    width: 100%;
+    max-height: 85vh;
+  }
+  
+  .train-info {
+    padding: 12px;
+  }
+  
+  .train-number {
+    font-size: 18px;
+  }
+  
+  .timetable-header {
+    padding: 8px 16px 8px 32px;
+  }
+  
+  .station-no {
+    font-size: 11px;
+  }
+  
+  .stops-station-name {
+    font-size: 13px;
+  }
+  
+  .time-cell {
+    font-size: 13px;
+  }
+  
+  .station-tag {
+    font-size: 9px;
+    padding: 1px 3px;
+  }
+  
+  .station-title {
+    font-size: 13px;
+  }
+  
+  .time-info {
+    font-size: 11px;
+  }
+  
+  .step-content {
+    margin-left: 12px;
+  }
+}
+
+/* 自定义步骤条样式 */
+.custom-steps {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+}
+
+.step-item {
+  display: flex;
+  position: relative;
+  padding-bottom: 10px;
+  min-height: 30px;
+}
+
+.step-item:last-child {
+  padding-bottom: 10px;
+}
+
+.step-item:last-child .step-line {
+  display: none;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #999;
+  margin-top: 5.5px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  margin-left: 0px;
+}
+
+.step-item.default .step-dot {
+  background-color: white;
+  border: 1px solid #999;
+  width: 8px;
+  height: 8px;
+}
+
+
+.step-line {
+  position: absolute;
+  left: 3px;
+  top: 14px;
+  width: 1.2px;
+  height: calc(100% - 0px);
+  background-color: #999;
+}
+
+.step-content {
+  margin-left: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.step-item.finish .step-dot {
+  background-color: #3D97F9;
+  width: 8px;
+  height: 8px;
+  border: none;
+}
+
+.step-item.start .step-dot {
+  background-color: #3D97F9;
+  width: 8px;
+  height: 8px;
+  border: none;
+}
+
+.step-item.process .step-dot {
+  background-color: white;
+  border: 1px solid #3D97F9;
+  width: 8px;
+  height: 8px;
+}
+
+.step-item.finish .step-line {
+  background-color: #999;
+}
+
+.step-item.start .step-line {
+  background-color: #3D97F9;
+}
+
+
+.step-item.process .step-line {
+  background-color: #3D97F9;
+}

@@ -1,0 +1,96 @@
+.mobile-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* 防止滑动时内容溢出 */
+}
+
+.mobile-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 60px;
+  width: 100%;
+  transition: transform 0.3s ease-out;
+  will-change: transform; /* 优化动画性能 */
+}
+
+/* 滑动动画 */
+.mobile-content.slide-left {
+  animation: slideLeft 0.3s forwards;
+}
+
+.mobile-content.slide-right {
+  animation: slideRight 0.3s forwards;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(30%);
+    opacity: 0;
+  }
+}
+
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 33.33%;
+  height: 100%;
+  color: #999;
+  font-size: 10px;
+  transition: color 0.3s;
+  margin-bottom: 10px;
+}
+
+.nav-item.active {
+  color: #1677ff;
+}
+
+.nav-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0px;
+}
+
+.nav-icon svg, .nav-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .mobile-layout {
+    display: none;
+  }
+} 

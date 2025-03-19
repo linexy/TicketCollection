@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+  /* 防止iOS设备上的页面缩放 */
+  touch-action: manipulation;
+}
+
+/* 防止iOS设备上的输入框自动放大 */
+input, select, textarea {
+  font-size: 16px; /* iOS上小于16px的字体会导致输入时自动放大 */
+  max-height: 100%; /* 防止输入框过高 */
+}
+
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important; /* 确保在移动设备上字体大小不小于16px */
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.add-ticket-form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.add-ticket-form form > div {
+  margin-bottom: 15px;
+}
+
+.add-ticket-form label {
+  display: inline-block;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.add-ticket-form input,
+.add-ticket-form select {
+  padding: 5px;
+  width: 200px;
+}
+
+.add-ticket-form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-ticket-form button:hover {
+  background-color: #45a049;
+}
+
+nav {
+  padding: 20px;
+  background-color: #f8f9fa;
+  margin-bottom: 20px;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+nav a:hover {
+  color: #007bff;
+}

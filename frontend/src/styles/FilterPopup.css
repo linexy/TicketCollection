@@ -1,0 +1,147 @@
+/* TDesign 筛选底部弹出框样式 */
+.t-filter-popup.t-popup {
+  max-height: 80vh;
+  z-index: 10000; /* 确保弹出框在最上层 */
+}
+
+.t-filter-popup .t-popup__content {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+}
+
+.t-filter-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-bottom: calc(16px + 60px); /* 底部增加额外padding，避免被底部导航栏遮挡 */
+}
+
+.t-filter-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+  margin-bottom: 16px;
+}
+
+.t-filter-section {
+  margin-bottom: 16px;
+}
+
+.t-filter-section h4 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 500;
+}
+
+.t-filter-options {
+  display: flex;
+  gap: 16px;
+}
+
+.t-filter-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #f5f7fa;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.t-filter-option.active {
+  background-color: rgba(0, 112, 251, 0.1);
+  border: 1px solid #0052d9;
+}
+
+.t-filter-option-text {
+  font-size: 14px;
+  color: #333;
+}
+
+.t-filter-option.active .t-filter-option-text {
+  color: #0052d9;
+  font-weight: 500;
+}
+
+.t-filter-actions {
+  display: flex;
+  background-color: white;
+  position: fixed;
+  bottom: 30px; /* 放在底部导航栏上方 */
+  left: 0;
+  right: 0;
+  z-index: 10001;
+  padding: 16px;
+  gap: 12px;
+
+}
+
+.t-filter-cancel-btn.t-button, .t-filter-confirm-btn.t-button {
+  flex: 1;
+  border-radius: 8px;
+  height: 44px;
+  font-size: 16px;
+}
+
+.t-filter-cancel-btn.t-button {
+  background-color: #f5f7fa;
+  color: #666;
+  border-color: #e6e6e6;
+}
+
+.t-filter-confirm-btn.t-button {
+  background-color: #0052d9;
+  color: white;
+  border: none;
+}
+
+/* 年份选择样式 */
+.t-year-select-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.t-year-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 4px;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+  color: #333;
+}
+
+.t-year-option.active {
+  background-color: rgba(0, 112, 251, 0.1);
+  color: #0052d9;
+  border: 1px solid #0052d9;
+}
+
+.t-year-option:hover:not(.active) {
+  background-color: #e6e9ed;
+}
+
+.t-more-years-btn {
+  color: #0052d9;
+  background-color: transparent;
+}
+
+.t-more-years-btn:hover {
+  background-color: rgba(0, 112, 251, 0.05);
+}
+
+/* 适配iPhone底部安全区 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .t-filter-actions {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+} 

@@ -1,0 +1,396 @@
+.home-page {
+  padding: 0;
+  background: #f5f5f5;
+  min-height: 100%;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.home-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.t-popup {
+  min-width: 320px;
+}
+
+.today-tickets-header {
+  margin-bottom: 12px;
+}
+
+.today-tickets-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.refresh-icon-button {
+  background: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+  margin-left: 8px;
+}
+
+.refresh-icon-button:hover {
+  background-color: #666;
+  color: #1677ff;
+}
+
+.refresh-icon-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refresh-icon-button .anticon {
+  font-size: 16px;
+}
+
+.add-ticket-button {
+  display: none;
+}
+
+.add-float-button {
+  position: fixed !important;
+  right: 24px !important;
+  top: 24px !important;
+  z-index: 100 !important;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(22, 119, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: #1677ff;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.today-tickets {
+  margin-bottom: 24px;
+  padding: 0 16px;
+}
+
+.ticket-cards {
+  display: flex;
+  overflow-x: auto;
+  padding: 8px 0;
+  gap: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ticket-cards::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.ticket-preview-card {
+  min-width: 280px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-right: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.ticket-preview-card:last-child {
+  margin-right: 0;
+}
+
+.ticket-preview-card:hover {
+  transform: translateY(-2px);
+}
+
+.ticket-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ticket-train-no {
+  font-weight: 600;
+  color: #1677ff;
+  font-size: 16px;
+}
+
+.ticket-date {
+  color: #666;
+  font-size: 16px;
+}
+
+.ticket-preview-stations {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ticket-preview-station {
+  flex: 1;
+}
+
+.ticket-preview-time {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.ticket-preview-name {
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket-preview-arrow {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-preview-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ticket-preview-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #eee;
+  padding-top: 12px;
+}
+
+.ticket-seat-info {
+  color: #666;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+.ticket-checking-port {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 2px;
+  display: block;
+}
+
+.ticket-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f5222d;
+}
+
+.upcoming-tickets {
+  margin-bottom: 0;
+}
+
+.upcoming-tickets h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 16px;
+
+  color: #333;
+}
+
+.upcoming-list {
+
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  padding: 8px 40px;
+}
+
+.upcoming-ticket-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 16px;
+  margin: 0;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-bottom: 16px;
+  min-height: 100px;
+}
+
+.upcoming-ticket-item:last-child {
+  margin-bottom: 8px;
+}
+
+.upcoming-ticket-item:active {
+  transform: scale(0.98);
+}
+
+.upcoming-ticket-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-right: 16px;
+}
+
+.upcoming-ticket-stations {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px; 
+  font-size: 18px;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.upcoming-ticket-stations .arrow {
+  margin: 0 8px;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.upcoming-ticket-info {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.upcoming-ticket-info .dot {
+  display: inline-block;
+  margin: 0 8px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.upcoming-ticket-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  min-width: 60px;
+
+}
+
+.upcoming-ticket-day {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1890ff;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.upcoming-ticket-type {
+  font-size: 14px;
+  color: #1677ff;
+  background-color: rgba(22, 119, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-top: auto;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+
+.upcoming-ticket-info span:first-child {
+  color: #1677ff;
+}
+
+.no-tickets {
+  background-color: #fff;
+  border-radius: 0;
+  padding: 32px 16px;
+  text-align: center;
+  color: #999;
+  font-size: 15px;
+  box-shadow: none;
+}
+
+@media screen and (min-width: 769px) {
+  .home-page {
+    display: none;
+  }
+}
+
+/* 今日出行卡片样式 */
+.today-ticket-cards {
+  padding:0px 0px;
+}
+
+.today-ticket-wrapper {
+  margin-bottom: 1px;
+  padding: 10px 10px;
+}
+
+.today-ticket-wrapper .ticket-card-overlay {
+  position: relative;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.today-ticket-wrapper .ticket-card {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 修改弹出模态框的样式 */
+.ticket-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+} 
+
+.nav-icon3 {
+  width: 35px;
+  height: 35px;
+  padding-bottom: 5px;
+}

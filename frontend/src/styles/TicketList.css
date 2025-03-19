@@ -1,0 +1,2888 @@
+.ticket-container {
+  padding: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.ticket-list-header {
+  display: none; /* 默认隐藏头部导航 */
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket-list-header h1 {
+  font-size: 24px;
+  color: #1a1a1a;
+  margin: 0;
+  font-weight: 600;
+}
+
+.add-ticket-button {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s;
+  box-shadow: 0 2px 6px rgba(24,144,255,0.2);
+}
+
+.add-ticket-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24,144,255,0.3);
+}
+
+.ticket-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+}
+
+.ticket-table th {
+  background: #fafafa;
+  padding: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: center;
+}
+
+.ticket-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #262626;
+  text-align: center;
+}
+
+.ticket-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ticket-table tbody tr {
+  transition: all 0.3s;
+}
+
+.ticket-table tbody tr:hover {
+  background: #f8f9fc;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  padding: 0 0 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #262626;
+  margin: 0;
+}
+
+.modal-close {
+  color: #999;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ticket-form {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  color: #666;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 16px; /* 确保字体大小不小于16px，防止iOS缩放 */
+  transition: all 0.3s;
+  box-sizing: border-box;
+  -webkit-appearance: none; /* 防止iOS默认样式 */
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #40a9ff;
+  box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+  outline: none;
+}
+
+.form-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.station-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 8px;
+  position: relative;
+  margin-bottom: 12px;
+  align-items: flex-end;
+}
+
+.station-row .form-group,
+.time-row .form-group,
+.form-row .form-group {
+  width: 100%;
+  flex: none;
+}
+
+.station-swap-button {
+  width: 24px;
+  height: 24px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  color: #1890ff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 28px;
+  padding: 0;
+}
+
+.station-swap-button:hover {
+  background-color: #e6e6e6;
+  transform: scale(1.1);
+}
+
+.station-row::after {
+  display: none;
+}
+
+.station-row .form-group:first-child,
+.station-row .form-group:last-child {
+  padding: 0;
+}
+
+.time-row {
+  display: flex;
+  gap: 16px;
+}
+
+.time-row .form-group {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 16px;
+}
+
+.cancel-button, .submit-button, .ocr-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cancel-button {
+  background: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  color: #666;
+}
+
+.submit-button {
+  background: #1890ff;
+  border: none;
+  color: white;
+}
+
+.ocr-button {
+  background: #52c41a;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ocr-button:disabled {
+  background-color: #d9d9d9;
+  cursor: not-allowed;
+}
+
+.ocr-button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .form-actions {
+    padding: 10px 0 0;
+    gap: 8px;
+  }
+
+  .cancel-button, .submit-button, .ocr-button {
+    flex: 1;
+    padding: 10px 16px;
+  }
+}
+
+.form-group input::placeholder {
+  color: #bfbfbf;
+}
+
+/* 美化日期时间输入框 */
+input[type="datetime-local"] {
+  position: relative;
+  padding-right: 30px !important;
+  cursor: pointer;
+  background: #f9f9f9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E") no-repeat right 8px center;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 移除数字输入框的上下箭头 */
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 优化日期时间输入框的悬停和焦点状态 */
+input[type="datetime-local"]:hover,
+input[type="datetime-local"]:focus {
+  background-color: white;
+}
+
+/* 日期选择器样式 */
+.date-picker-input {
+  width: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  color: #262626;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.date-picker-input:focus {
+  border-color: #40a9ff;
+  box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+  outline: none;
+  background-color: white;
+}
+
+.custom-calendar {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.react-datepicker {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  padding: 16px;
+  background: white;
+  width: 480px;
+}
+
+.react-datepicker__header {
+  background: white;
+  border: none;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.react-datepicker__current-month {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* 月份网格布局 */
+.react-datepicker__monthPicker {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  padding: 8px;
+}
+
+.react-datepicker__month-text {
+  width: auto !important;
+  padding: 8px 4px;
+  margin: 0;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* 月份显示为数字 */
+.react-datepicker__month-text::before {
+  content: counter(month);
+}
+
+.react-datepicker__month-text:hover {
+  background-color: #f5f5f5;
+}
+
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__month-text--selected {
+  background-color: #1890ff !important;
+  color: white !important;
+}
+
+/* 年份切换按钮 */
+.react-datepicker__navigation {
+  top: 16px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+}
+
+.react-datepicker__navigation--previous {
+  left: 16px;
+}
+
+.react-datepicker__navigation--next {
+  right: 16px;
+}
+
+/* 年份显示样式 */
+.react-datepicker__year-read-view {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 输入框样式 */
+.custom-date-range .react-datepicker__input-container input {
+  width: 140px;
+  height: 32px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 14px;
+  color: #333;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.custom-date-range .react-datepicker__input-container input:hover {
+  border-color: #40a9ff;
+}
+
+.custom-date-range .react-datepicker__input-container input:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+  outline: none;
+}
+
+.date-range-filter {
+  background: white;
+
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.date-picker-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.date-picker-wrapper label {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.date-picker-input {
+  width: 160px;
+  min-width: 160px;
+  height: 40px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.date-picker-input:hover {
+  border-color: #40a9ff;
+}
+
+.filter-button, .reset-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.filter-button {
+  background: #1890ff;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 6px rgba(24,144,255,0.2);
+}
+
+.reset-button {
+  background: #f5f5f5;
+  color: #666;
+  border: 1px solid #e6e6e6;
+}
+
+.filter-button:hover {
+  background: #40a9ff;
+  transform: translateY(-1px);
+}
+
+.reset-button:hover {
+  background: #e6e6e6;
+  transform: translateY(-1px);
+}
+
+
+
+.date-range-filter .switch-button {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.date-range-filter .switch-button.active {
+  background-color: white;
+  color: #262626;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.date-range-filter .switch-button:hover:not(.active) {
+  color: #262626;
+}
+
+.statistics-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.stat-item {
+  padding: 20px;
+  background: #f8f9fc;
+  border-radius: 10px;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.stat-label {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  color: #1a1a1a;
+  font-size: 28px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-value.highlight {
+  color: #1890ff;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* 添加票据页面的车票类型切换样式 */
+.ticket-type-switch {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.ticket-type-switch .ant-segmented {
+  width: auto;
+  margin: 0 auto;
+}
+
+.switch-button {
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.switch-button.active {
+  background-color: white;
+  color: #262626;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.switch-button:hover:not(.active) {
+  color: #262626;
+}
+
+/* 列表页面的车票类型切换样式 */
+.date-range-filter .ticket-type-switch {
+  min-width: 240px;
+
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.date-range-filter .switch-button {
+  flex: 1;
+  padding: 8px 8px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.date-range-filter .switch-button.active {
+  background-color: white;
+  color: #262626;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.date-range-filter .switch-button:hover:not(.active) {
+  color: #262626;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+
+  border-radius: 8px;
+
+}
+
+.pagination-button {
+  padding: 8px 16px;
+  border: 1px solid #e6e6e6;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #262626;
+  transition: all 0.3s;
+}
+
+.pagination-button:hover:not(:disabled) {
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.pagination-button:disabled {
+  background: #f5f5f5;
+  color: #bfbfbf;
+  cursor: not-allowed;
+  border-color: #e6e6e6;
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #666;
+}
+
+/* PC端的添加按钮样式 */
+.add-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 2px 6px rgba(24,144,255,0.2);
+  cursor: pointer;
+  display: inline-block; /* 确保按钮显示 */
+  margin-right: 16px;
+}
+
+.add-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24,144,255,0.3);
+} 
+
+.import-button, .template-button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block; /* 确保按钮显示 */
+}
+
+.import-button:hover, .template-button:hover {
+  background-color: #f5f5f5;
+}
+
+.import-button {
+  color: #1890ff;
+  border-color: #1890ff;
+}
+
+.template-button {
+  color: #52c41a;
+  border-color: #52c41a;
+}
+
+/* 默认隐藏浮动按钮 */
+.floating-add-button {
+  display: none;
+}
+
+/* 移动端样式 */
+@media screen and (max-width: 768px) {
+  /* 隐藏不需要的元素 */
+  .custom-date-range,
+  .date-picker-wrapper,
+  .filter-button,
+  .reset-button,
+  .add-button,
+  .import-button,
+  .template-button {
+    display: none !important;
+  }
+
+  .ticket-table td {
+    text-align: center;
+  }
+
+  /* 显示并优化快捷日期按钮组 */
+  .quick-date-buttons {
+    display: flex !important;
+    width: 100%;
+    margin: 0;
+    padding: 8px;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: center;
+  }
+
+  .quick-date-buttons .ant-segmented {
+    min-width: auto;
+    width: auto;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+  }
+
+  .quick-date-buttons::-webkit-scrollbar {
+    display: none;
+  }
+
+  .quick-date-buttons button {
+    flex: 1;
+    min-width: 70px;
+    padding: 8px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+    border: 1px solid #e8e8e8;
+    background: #f5f5f5;
+    color: #666;
+    margin: 0 4px;
+  }
+
+  .quick-date-buttons button.active {
+    background: #e6f7ff;
+    color: #1890ff;
+    border-color: #91d5ff;
+    font-weight: 600;
+  }
+
+  /* 调整日期范围过滤器容器 */
+  .date-range-filter {
+    padding: 4px;
+    margin: 0;
+    flex-direction: row;
+    gap: 4px;
+    background-color: #f5f7fa;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* 优化类型切换按钮组 */
+  .ticket-type-switch {
+    width: auto;
+    margin: 0;
+  }
+
+  /* 调整分段控件样式 */
+  .ant-segmented {
+    padding: 0;
+    background-color: transparent;
+    min-height: 28px;
+  }
+
+  /* 调整分段控件项目样式 */
+  .segmented-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    padding: 0;
+    gap: 4px;
+  }
+
+  /* 调整图标大小 */
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+  }
+
+  /* 优化快速日期按钮 */
+  .quick-date-buttons {
+    width: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 调整快速日期按钮的分段控件 */
+  .quick-date-buttons .ant-segmented {
+    background-color: transparent;
+    min-height: 28px;
+  }
+
+  /* 调整快速日期按钮的分段控件项目 */
+  .quick-date-buttons .ant-segmented-item {
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+
+  /* 调整过滤按钮区域 */
+  .filter-buttons {
+    width: auto;
+    margin: 0;
+    justify-content: flex-end;
+  }
+
+  /* 隐藏自定义日期范围 */
+  .custom-date-range {
+    display: none;
+  }
+  
+  /* 调整表格顶部间距 */
+  .ticket-table {
+    margin-top: 4px;
+  }
+}
+
+/* 针对更小屏幕的优化 */
+@media screen and (max-width: 480px) {
+  .ticket-container {
+    padding: 8px;
+  }
+
+  .date-range-filter {
+
+    margin: -8px -8px 8px -8px;  /* 调整负边距以匹配容器padding */
+  }
+
+  .statistics-panel,
+  .ticket-table-container,
+  .pagination {
+    margin: 8px 0;
+    padding: 12px;
+  }
+
+  /* 调整表格文字大小 */
+  .ticket-table th,
+  .ticket-table td {
+    padding: 10px 6px;
+    font-size: 12px;
+ 
+  }
+
+  /* 调整浮动按钮大小 */
+  .floating-add-button {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+  }
+
+  /* 优化统计面板 */
+  .stat-item {
+    padding: 8px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+  }
+}
+
+/* 添加表格行点击效果 */
+@media screen and (max-width: 768px) {
+  .ticket-table tr {
+    transition: background-color 0.2s;
+  }
+
+  .ticket-table tr:active {
+    background-color: #f5f7fa;
+  }
+
+  /* 添加分隔线 */
+  .statistics-panel {
+    position: relative;
+  }
+
+  .statistics-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background: #f5f7fa;
+  }
+}
+
+/* PC端显示到达时间列 */
+.arrival-time {
+  display: table-cell;
+}
+
+/* 移动端样式 */
+@media screen and (max-width: 768px) {
+  /* 隐藏到达时间列 */
+  .arrival-time {
+    display: none;
+  }
+
+  /* 调整表格列显示 - 保留序号、车次、出发站、到达站、车厢/座位、票价列 */
+  .ticket-table th:not(:nth-child(2)):not(:nth-child(4)):not(:nth-child(5)):not(:nth-child(7)):not(:nth-child(9)),
+  .ticket-table td:not(:nth-child(2)):not(:nth-child(4)):not(:nth-child(5)):not(:nth-child(7)):not(:nth-child(9)) {
+    display: none;
+  }
+
+  /* 优化移动端表格样式 */
+  .ticket-table th,
+  .ticket-table td {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  /* 调整车厢/座位列的宽度 */
+  .ticket-table th:nth-child(7),
+  .ticket-table td:nth-child(7) {
+    min-width: 60px;
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* 针对更小屏幕的优化 */
+@media screen and (max-width: 480px) {
+  .ticket-table th,
+  .ticket-table td {
+    padding: 6px 3px;
+    font-size: 11px;
+  }
+}
+
+.quick-date-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 16px;
+}
+
+.quick-date-buttons button {
+  padding: 4px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+}
+
+.quick-date-buttons button:hover {
+  color: #1890ff;
+  border-color: #1890ff;
+}
+
+.custom-date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 16px;
+  background: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+
+}
+
+.custom-date-range .react-datepicker-wrapper {
+  width: auto;
+}
+
+.custom-date-range .react-datepicker__input-container input {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #333;
+  width: 120px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.custom-date-range .react-datepicker__input-container input:hover {
+  border-color: #1890ff;
+}
+
+.custom-date-range .react-datepicker__input-container input:focus {
+  outline: none;
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+}
+
+/* 日期分隔符 */
+.custom-date-range span {
+  color: #666;
+  font-size: 14px;
+}
+
+/* 快捷日期按钮组 */
+.quick-date-buttons {
+  display: flex;
+  gap: 0px;
+  margin-right: 16px;
+  background: white;
+  padding: 4px;
+  border-radius: 6px;
+
+}
+
+.quick-date-buttons button {
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.quick-date-buttons button:hover {
+  color: #1890ff;
+  background: #f0f7ff;
+}
+
+.quick-date-buttons button.active {
+  color: #1890ff;
+  background: #e6f7ff;
+  border-color: #91d5ff;
+  font-weight: 600;
+}
+
+/* 日期选择器弹出框样式 */
+.react-datepicker {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  padding: 16px;
+  background: white;
+  width: 480px;
+}
+
+.react-datepicker__header {
+  background: white;
+  border: none;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.react-datepicker__current-month {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* 月份网格布局 */
+.react-datepicker__monthPicker {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  padding: 8px;
+}
+
+.react-datepicker__month-text {
+  width: auto !important;
+  padding: 8px 4px;
+  margin: 0;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* 月份显示为数字 */
+.react-datepicker__month-text::before {
+  content: counter(month);
+}
+
+.react-datepicker__month-text:hover {
+  background-color: #f5f5f5;
+}
+
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__month-text--selected {
+  background-color: #1890ff !important;
+  color: white !important;
+}
+
+/* 年份切换按钮 */
+.react-datepicker__navigation {
+  top: 16px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+}
+
+.react-datepicker__navigation--previous {
+  left: 16px;
+}
+
+.react-datepicker__navigation--next {
+  right: 16px;
+}
+
+/* 年份显示样式 */
+.react-datepicker__year-read-view {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 输入框样式 */
+.custom-date-range .react-datepicker__input-container input {
+  width: 140px;
+  height: 32px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 14px;
+  color: #333;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.custom-date-range .react-datepicker__input-container input:hover {
+  border-color: #40a9ff;
+}
+
+.custom-date-range .react-datepicker__input-container input:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+  outline: none;
+}
+
+/* 版权信息样式 */
+.copyright {
+  text-align: center;
+  padding: 20px 0;
+  color: #999;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+.copyright a {
+  color: #1890ff;
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  color: #40a9ff;
+}
+
+/* 确保在移动端底部按钮上方显示 */
+@media screen and (max-width: 768px) {
+  .copyright {
+    padding: 16px 0;
+  }
+}
+
+/* 调整表格第一列（序号列）的样式 */
+.ticket-table th:first-child,
+.ticket-table td:first-child {
+  padding-left: 16px;  /* 增加左侧间距 */
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .ticket-table th:first-child,
+  .ticket-table td:first-child {
+    padding-left: 12px;  /* 移动端稍微减小间距 */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ticket-table th:first-child,
+  .ticket-table td:first-child {
+    padding-left: 8px;  /* 小屏幕进一步减小间距 */
+  }
+}
+
+/* 移动端样式 */
+@media screen and (max-width: 768px) {
+  .time-row.mobile {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .time-picker-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  .time-picker-group .date-input {
+    flex: 2;
+    min-width: 140px;
+  }
+
+  .time-picker-group .time-input {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .ant-picker {
+    width: 100%;
+    border-radius: 4px;
+    padding: 4px 11px;
+  }
+
+  .ant-picker-input > input {
+    font-size: 15px;
+    height: 36px;
+  }
+}
+
+/* 移动端表格样式优化 */
+@media screen and (max-width: 768px) {
+  .ticket-table {
+    border-spacing: 0;
+    border-collapse: separate;
+  }
+
+  .ticket-table tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .ticket-table th,
+  .ticket-table td {
+    padding: 1px 1px;  /* 增加上下内边距 */
+    font-size: 13px;    /* 稍微增大字体 */
+    line-height: 1.5;   /* 增加行高 */
+  }
+
+  /* 表格行样式 */
+  .ticket-table tbody tr {
+    height: 48px;      /* 设置固定行高 */
+    transition: background-color 0.2s;
+  }
+
+  /* 隔行变色 */
+  .ticket-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  /* 表头样式 */
+  .ticket-table thead th {
+    background-color: #f5f5f5;
+    font-weight: 500;
+    padding: 10px 1px;  /* 表头稍微加高 */
+  }
+
+  /* 调整序号列宽度 */
+  .ticket-table th:first-child,
+  .ticket-table td:first-child {
+    width: 50px;
+    min-width: 50px;
+  }
+}
+
+/* 移动端模态框样式优化 */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    max-width: 85%;     /* 进一步减小模态框宽度 */
+    padding: 12px;      /* 减小内边距 */
+  }
+
+  .ticket-form {
+    padding: 0 8px;     /* 减小表单内边距 */
+    gap: 10px;          /* 减小表单项间距 */
+  }
+
+  /* 调整网格布局的间距 */
+  .form-row {
+    gap: 10px;          /* 减小网格间距 */
+  }
+
+  .station-row {
+    gap: 6px;           /* 减小站点选择器间距 */
+  }
+
+  /* 调整时间选择器组的间距 */
+  .time-picker-group {
+    gap: 10px;           /* 减小时间选择器间距 */
+  }
+
+  .time-picker-group .date-input {
+    min-width: 140px;   /* 减小日期选择器最小宽度 */
+  }
+
+  .time-picker-group .time-input {
+    min-width: 100px;    /* 减小时间选择器最小宽度 */
+  }
+
+  /* 调整表单操作按钮区域 */
+  .form-actions {
+    padding: 12px 0 0;  /* 减小顶部内边距 */
+    gap: 8px;           /* 减小按钮间距 */
+  }
+}
+
+.view-ticket-button {
+  background: none;
+  border: none;
+  color: #1890ff;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+.view-ticket-button:hover {
+  text-decoration: underline;
+}
+
+.clickable-train-no {
+  cursor: pointer;
+  color: #1890ff;
+  font-weight: 500;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.clickable-train-no:hover {
+  color: #40a9ff;
+  text-decoration: underline;
+}
+
+.ocr-button {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ocr-button:disabled {
+  background-color: #d9d9d9;
+  cursor: not-allowed;
+}
+
+.ocr-button:hover:not(:disabled) {
+  background-color: #40a9ff;
+}
+
+/* 当天车票的特殊样式 */
+.ticket-table tr.today-ticket {
+  background-color: #E6F7FF;
+}
+
+/* 状态图标样式 */
+.travel-status-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .ticket-table tr.today-ticket::after {
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+  
+  .ticket-table tr.today-ticket:hover {
+    background-color: #e6f7ff !important;
+  }
+}
+
+/* 当日期选择器打开时的样式 */
+body.picker-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* 移动端选择器样式优化 */
+.mobile-picker {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-date-popup .ant-picker-panel-container,
+.mobile-time-popup .ant-picker-panel-container {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-date-popup .ant-picker-content,
+.mobile-time-popup .ant-picker-content {
+  touch-action: pan-y;
+}
+
+/* 增加选择器的可点击区域 */
+.ant-picker-cell {
+  padding: 8px 0;
+}
+
+.ant-picker-time-panel-column > li {
+  padding: 12px 0;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* 优化滚动条样式 */
+.ant-picker-time-panel-column::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ant-picker-time-panel-column::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+/* 确保选择器在移动端有足够的高度 */
+.mobile-date-popup .ant-picker-panel-container,
+.mobile-time-popup .ant-picker-panel-container {
+  max-height: 70vh;
+}
+
+/* 移动端时间选择器容器 */
+.mobile-time-container {
+  margin-bottom: 16px;
+}
+
+/* 移动端时间标签样式 */
+.mobile-time-label {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 3px;
+  font-weight: normal;
+}
+
+/* 确保移动端时间选择器组样式保持不变 */
+.mobile-time-container .time-picker-group {
+  display: flex;
+  gap: 8px;
+}
+
+.mobile-time-container .date-input {
+  flex: 2;
+  min-width: 140px;
+}
+
+.mobile-time-container .time-input {
+  flex: 1;
+  min-width: 100px;
+}
+
+/* 移动端时间选择器行样式 */
+.mobile-time-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+/* 移动端时间标签样式 */
+.mobile-time-row .mobile-time-label {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.85);
+  white-space: nowrap;
+  min-width: 70px;
+}
+
+/* 移动端时间选择器组样式 */
+.mobile-time-row .time-picker-group {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.mobile-time-row .date-input {
+  flex: 2;
+  min-width: 150px;
+}
+
+.mobile-time-row .time-input {
+  flex: 1;
+  min-width: 85px;
+}
+
+/* 添加三列布局样式 */
+.form-row.three-columns {
+  display: grid;
+  grid-template-columns: 1.5fr 0.75fr 0.75fr;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+/* 调整第二行的宽度比例 - 座位类型更宽 */
+.form-row.three-columns:nth-of-type(2) {
+  grid-template-columns: 1.5fr 0.75fr 0.75fr;
+}
+
+/* 移动端适配三列布局 */
+@media screen and (max-width: 768px) {
+  .form-row.three-columns {
+    grid-template-columns: 1.5fr 0.75fr 0.75fr;
+    gap: 6px;
+  }
+  
+  .form-row.three-columns:nth-of-type(2) {
+    grid-template-columns: 1.5fr 0.75fr 0.75fr;
+  }
+}
+
+/* 超小屏幕适配 */
+@media screen and (max-width: 360px) {
+  .form-row.three-columns,
+  .form-row.three-columns:nth-of-type(2) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* 进一步减小分割线上下间距 */
+.form-divider {
+  height: 1px;
+  background-color: #f0f0f0;
+  margin: 4px 0 4px 0; /* 进一步减小上下间距 */
+  width: 100%;
+}
+
+/* 进一步减小所有表单行的间距 */
+.form-row, 
+.station-row,
+.mobile-time-row,
+.form-row.three-columns {
+  margin-bottom: 4px; /* 减小统一间距 */
+}
+
+/* 减小表单项之间的间距 */
+.ticket-form {
+  gap: 8px; /* 减小表单项间距 */
+}
+
+/* 减小表单底部的间距 */
+.form-actions {
+  margin-top: 4px; /* 减小顶部间距 */
+  padding-top: 8px; /* 减小内边距 */
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .form-divider {
+    margin: 6px 0 6px 0; /* 移动端进一步减小间距 */
+  }
+  
+  .form-row, 
+  .station-row,
+  .mobile-time-row,
+  .form-row.three-columns {
+    margin-bottom: 2px; /* 移动端统一间距 */
+  }
+  
+  .form-actions {
+    margin-top: 0px;
+    padding-top: 8px;
+  }
+  
+  /* 减小移动端时间选择器行的间距 */
+  .mobile-time-row {
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+}
+
+
+
+
+/* 减小模态框头部和表单之间的间距 */
+.modal-header {
+  margin-bottom: 12px; /* 减小间距 */
+  padding-bottom: 12px; /* 减小内边距 */
+}
+
+/* 减小站点行的间距 */
+.station-row {
+  gap: 6px; /* 减小间距 */
+}
+
+/* 减小三列布局的间距 */
+.form-row.three-columns {
+  gap: 8px; /* 减小间距 */
+}
+
+/* PC端时间选择器容器 */
+.pc-time-container {
+  margin-bottom: 8px;
+}
+
+/* PC端时间选择器行样式 */
+.pc-time-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+/* 确保PC端时间选择器样式 */
+.pc-time-row .form-group {
+  margin-bottom: 0;
+}
+
+/* 移动端时间选择器行样式 */
+.mobile-time-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 10px;
+}
+
+/* 移动端时间标签样式 */
+.mobile-time-row .mobile-time-label {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.85);
+  white-space: nowrap;
+  min-width: 70px;
+}
+
+/* 移动端时间选择器组样式 */
+.mobile-time-row .time-picker-group {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.mobile-time-row .date-input {
+  flex: 2;
+  min-width: 150px;
+}
+
+.mobile-time-row .time-input {
+  flex: 1;
+  min-width: 85px;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .pc-time-container {
+    display: none; /* 在移动端隐藏PC时间容器 */
+  }
+  
+  /* 减小移动端时间选择器行的间距 */
+  .mobile-time-row {
+    margin-bottom: 2px;
+    gap: 8px;
+  }
+}
+
+.clickable-station-name {
+  cursor: pointer;
+  color: #1890ff;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.clickable-station-name:hover {
+  text-decoration: underline;
+}
+
+/* 导航图标样式 */
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  vertical-align: middle;
+
+}
+.nav-icon2 {
+
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+/* 分段控制器样式 - 最终版本 */
+.segmented-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+}
+
+.ant-segmented {
+  padding: 2px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.ant-segmented-item {
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-segmented-item-label {
+  height: 28px;
+  padding: 0 8px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.ant-segmented-thumb {
+  height: 28px;
+  margin: 0;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+
+
+.quick-date-buttons .ant-segmented {
+  min-width: 250px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .quick-date-buttons .ant-segmented {
+    min-width: auto;
+    width: 100%;
+    max-width: 251px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 2px;
+  }
+  
+  .quick-date-buttons {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    padding: 0 8px;
+    margin: 8px 0;
+    background: transparent;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .ant-segmented-item {
+    font-size: 14px;
+  }
+}
+
+/* 状态图标样式 */
+.travel-status-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0px;
+}
+
+.clickable-train-no {
+  cursor: pointer;
+  color: #1890ff;
+  font-weight: 500;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+/* 移动端视图样式 */
+.ticket-container.mobile-view {
+  padding: 0;
+  background-color: #f5f7fa;
+}
+
+.ticket-container.mobile-view .ticket-list-header {
+  margin-bottom: 16px;
+}
+
+.ticket-container.mobile-view .ticket-list-header h1 {
+  font-size: 20px;
+}
+
+.ticket-container.mobile-view .date-range-filter {
+  flex-direction: column;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.ticket-container.mobile-view .filter-buttons {
+  margin-top: 12px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ticket-container.mobile-view .ticket-table {
+  margin-top: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ticket-container.mobile-view .ticket-table th,
+.ticket-container.mobile-view .ticket-table td {
+  padding: 12px 0px;
+  font-size: 13px;
+}
+
+.ticket-container.mobile-view .pagination {
+  margin-top: 16px;
+}
+
+.ticket-container.mobile-view .floating-add-button {
+  display: none;
+}
+
+/* 统计页面移动端样式 */
+
+.statistics-container.mobile-view .statistics-tabs {
+  margin-bottom: 16px;
+}
+
+.statistics-container.mobile-view .statistics-panel {
+  flex-direction: column;
+  padding: 12px;
+}
+
+.statistics-container.mobile-view .stat-item {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+@media screen and (min-width: 769px) {
+  .ticket-container.mobile-view,
+  .statistics-container.mobile-view {
+    display: none;
+  }
+}
+
+/* 新的移动端导航样式 */
+.ticket-mobile-nav {
+  background: #f5f5f5;
+  box-shadow: none;
+  margin: 0;
+  border-radius: 0;
+  position: relative;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  overflow: visible;
+}
+
+
+
+.ticket-mobile-nav .ant-tabs-nav {
+  margin-bottom: 0;
+  padding: 0 16px;
+}
+
+.ticket-mobile-nav .ant-tabs-nav-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ticket-mobile-nav .ant-tabs-tab {
+  padding: 12px 0;
+  margin: 0 16px;
+}
+
+.ticket-mobile-nav .ant-tabs-ink-bar {
+  height: 3px;
+  background-color: #1890ff;
+  border-radius: 3px;
+}
+
+.tab-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.tab-label .nav-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.date-filter-row {
+
+  background-color: #f5f7fa;
+  border-top: 1px solid #f0f0f0;
+}
+
+.date-filter-row .ant-segmented {
+  width: 100%;
+  background-color: transparent;
+  padding: 2px;
+  border-radius: 8px;
+}
+
+.date-filter-row .ant-segmented-item {
+  min-width: auto;
+  flex: 1;
+  border-radius: 6px;
+}
+
+.date-filter-row .ant-segmented-item-label {
+  padding: 6px 0;
+  font-size: 13px;
+  line-height: 1.2;
+  height: auto;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-filter-row .ant-segmented-thumb {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 隐藏水平滚动条 */
+.date-filter-row::-webkit-scrollbar {
+  display: none;
+}
+
+.date-filter-row {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* 确保内容区域不被底部导航栏遮挡 */
+.ticket-container.mobile-view {
+  padding-bottom: 60px;
+  padding-top: 8px;
+}
+
+/* 在移动端显示头部导航 */
+@media screen and (max-width: 768px) {
+  .ticket-list-header {
+    display: flex;
+  }
+}
+
+/* 防止iOS设备上的输入框自动缩放 */
+@media screen and (max-width: 768px) {
+  .form-group input,
+  .form-group select,
+  input[type="datetime-local"],
+  input[type="number"],
+  input[type="text"],
+  select {
+    font-size: 16px !important; /* 强制字体大小不小于16px */
+    transform: scale(1); /* 防止缩放 */
+    transform-origin: left top;
+    touch-action: manipulation; /* 防止触摸操作导致的缩放 */
+  }
+  
+  /* 修复iOS上datetime-local输入框的样式问题 */
+  input[type="datetime-local"] {
+    min-height: 44px; /* 增加高度，使触摸更容易 */
+    line-height: normal;
+  }
+  
+  /* 修复iOS上的表单布局 */
+  .ticket-form {
+    touch-action: manipulation;
+  }
+}
+
+/* 移动端时间选择器样式 */
+.mobile-picker-container {
+  flex: 1;
+}
+
+.mobile-datetime-picker {
+  background-color: #fff;
+  border: 1px solid #ebedf0;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 15px;
+  color: #333;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+/* 未选择日期时的文字颜色 */
+.mobile-datetime-picker:not([data-has-value="true"]) {
+  color: #bbb;
+}
+
+.mobile-datetime-picker:active {
+  background-color: #f5f5f5;
+}
+
+
+
+/* 确保移动端时间选择器行样式保持不变 */
+.mobile-time-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+/* 移动端时间标签样式 */
+.mobile-time-label {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 3px;
+  font-weight: normal;
+  min-width: 70px;
+}
+
+/* 自定义 antd-mobile 日期选择器样式 */
+:root:root {
+  --adm-color-primary: #1890ff;
+}
+
+.adm-picker-header {
+  background-color: #f5f5f5;
+}
+
+.adm-picker-header-button {
+  font-size: 16px;
+}
+
+.adm-picker-view-column-item {
+  font-size: 16px;
+}
+
+/* 确保在移动端底部按钮上方显示 */
+@media screen and (max-width: 768px) {
+  .adm-picker {
+    z-index: 1100;
+  }
+}
+
+/* 移动端无限滚动列表样式 */
+.mobile-ticket-list {
+  padding: 0 28px;
+  padding-left: 20px;
+  background-color: #f5f5f5;
+}
+
+/* 移动端顶部标题和统计信息样式 */
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  background-color: transparent;
+}
+
+.mobile-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.filter-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1890ff;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.filter-icon:hover {
+  background-color: rgba(24, 144, 255, 0.1);
+}
+
+.mobile-statistics-summary {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  margin: 0;
+  padding: 16px 18px 2px;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+.mobile-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  flex: 1;
+  position: relative;
+}
+
+.mobile-stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: 0;
+  width: 1px;
+  height: 70%;
+  background-color: #eeeeee;
+}
+
+.mobile-stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.mobile-stat-label {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.more-statistics {
+  text-align: center;
+  margin: 10px 0;
+  padding: 0 28px;
+}
+
+.more-statistics a {
+  color: #999;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-statistics a::after {
+  content: '>';
+  margin-left: 4px;
+}
+
+/* 分隔线 */
+.mobile-divider {
+  height: 1px;
+  background-color: #f5f5f5;
+  margin: 0 0 5px;
+}
+
+/* 移动端筛选区域样式 */
+.mobile-filter-area {
+  padding: 5px 28px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-text-button {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 12px;
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  top: 130px;
+  z-index: 100;
+  transition: all 0.3s ease;
+  padding: 6px 12px;
+}
+
+
+
+.filter-down-arrow {
+  margin-left: 4px;
+  font-size: 10px;
+}
+
+/* 底部弹出式筛选面板样式 */
+.filter-modal.bottom-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999; /* 高于底部导航栏的z-index 100 */
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.filter-modal.bottom-sheet.show {
+  display: flex;
+}
+
+.filter-modal .filter-content {
+  width: 100%;
+  max-height: calc(100vh - 10px); /* 几乎占满整个视口高度 */
+
+  background-color: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 16px 16px calc(16px + 80px) 16px; /* 底部增加额外padding，避免被底部导航栏遮挡 */
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative; /* 相对定位 */
+  z-index: 10000; /* 确保内容高于背景遮罩 */
+  overflow-y: auto; /* 确保内容可滚动 */
+}
+
+.filter-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.filter-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.filter-body {
+  flex: 1;
+  padding: 10px 0;
+  overflow-y: auto; /* 内容可滚动 */
+  margin-bottom: 16px; /* 增加底部空间 */
+}
+
+.filter-section {
+  margin-bottom: 16px;
+}
+
+.filter-section h4 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 500;
+}
+
+.filter-options {
+  display: flex;
+  gap: 16px;
+}
+
+.filter-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #f5f7fa;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.filter-option.active {
+  background-color: rgba(24, 144, 255, 0.1);
+  border: 1px solid #1890ff;
+}
+
+.filter-option-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.filter-option-text {
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-option.active .filter-option-text {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+/* 年份选择容器样式 */
+.year-select-container {
+  margin-bottom: 24px; /* 增加底部间距，确保有足够空间 */
+}
+
+.filter-actions {
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+  background-color: white;
+  position: fixed;
+  bottom: 60px; /* 放在底部导航栏上方 */
+  left: 0;
+  right: 0;
+  z-index: 10001; /* 确保按钮在最上层 */
+}
+
+.filter-cancel-btn, .filter-confirm-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+}
+
+.filter-cancel-btn {
+  background-color: #f5f7fa;
+  color: #666;
+  margin-right: 12px;
+}
+
+.filter-cancel-btn:hover {
+  background-color: #e6e6e6;
+}
+
+.filter-confirm-btn {
+  background-color: #1890ff;
+  color: white;
+}
+
+/* 禁止背景滚动 */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* 添加以下属性以更好地支持iOS Safari */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  touch-action: none;
+  -webkit-overflow-scrolling: none;
+}
+
+/* 添加iOS Safari特定样式 */
+@supports (-webkit-touch-callout: none) {
+  body.modal-open {
+    /* iOS Safari特定样式 */
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    touch-action: none;
+  }
+  
+  /* 确保弹窗内容可以滚动 */
+  .filter-modal.bottom-sheet.show .filter-content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 85vh; /* 限制高度，确保在iOS上可以滚动 */
+  }
+}
+
+/* 年份选择列表样式 */
+.year-select-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px; /* 添加底部边距 */
+}
+
+.year-option {
+  background-color: #f5f7fa;
+  border-radius: 4px;
+  padding: 10px 0; /* 增加上下内边距 */
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.year-option.active {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.year-option:hover:not(.active) {
+  background-color: #f0f0f0;
+}
+
+/* 更多年份按钮 */
+.more-years-btn {
+  color: #1890ff;
+  background-color: rgba(24, 144, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-years-btn:hover {
+  background-color: rgba(24, 144, 255, 0.2);
+}
+
+/* 移动端票据卡片样式 */
+.mobile-ticket-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.mobile-ticket-item {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-ticket-item.today-ticket {
+  background-color: #f2f9fa;
+}
+
+.mobile-ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-ticket-number {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-train-no, .mobile-flight-no {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1890ff;
+}
+
+.mobile-train-type, .mobile-flight-type {
+  font-size: 12px;
+  color: #666;
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.mobile-ticket-price {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.mobile-ticket-stations {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.mobile-station-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+}
+
+.mobile-station-info:last-child {
+  align-items: flex-end;
+}
+
+.mobile-station-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.mobile-station-time {
+  font-size: 14px;
+  color: #666;
+  padding-top: 5px;
+}
+
+.mobile-journey-arrow {
+  font-size: 18px;
+  color: #999;
+  margin: 0 12px;
+}
+
+.journey-arrow-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* 方案二：虚线和图标 */
+.mobile-journey-path {
+  position: relative;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.journey-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, #1890ff 50%, transparent 50%);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+  z-index: 1;
+}
+
+.journey-icon {
+  position: relative;
+  z-index: 2;
+  background-color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.train-icon, .plane-icon {
+  width: 30px;
+  height: 30px;
+  color: #1890ff;
+}
+
+.mobile-ticket-item:hover .journey-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.mobile-ticket-footer {
+  font-size: 13px;
+  color: #888;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 8px;
+}
+
+/* 无限滚动加载状态 */
+.infinite-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.adm-infinite-scroll {
+  padding: 12px 0;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+/* 移动端视图样式 */
+.ticket-container.mobile-view {
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.filter-modal.show .filter-content {
+  transform: translateY(0);
+}
+
+/* 时间轴样式 */
+.timeline-container {
+  position: relative;
+  padding-left: 0px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 20px;
+  width: 1px;
+
+  z-index: 1;
+  /* 改为虚线 */
+  background-image: linear-gradient(#999 50%, transparent 50%);
+  background-size: 2px 6px;
+}
+
+.timeline-items {
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.timeline-date-section {
+  position: relative;
+  width: 40px; /* 减小宽度 */
+  flex-shrink: 0;
+  padding-top: 10px;
+}
+
+.timeline-date {
+  position: sticky;
+  top: 70px;
+  background-color: #f5f7fa;
+  padding: 6px 0;
+
+  text-align: center;
+  border-radius: 4px;
+  z-index: 3;
+}
+
+.timeline-month-day {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.2;
+}
+
+.timeline-month {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  display: inline;
+}
+
+.timeline-day {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1890ff;
+  display: inline;
+  margin-left: 2px;
+}
+
+.timeline-year {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1890ff;
+  border: 2px solid #fff;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+.timeline-content {
+  flex: 1;
+  padding-left: 16px;
+}
+
+/* 同一天的车票之间添加间隔 */
+.timeline-content .mobile-ticket-item {
+  margin-bottom: 10px;
+}
+
+/* TDesign Popup 样式 */
+.ticket-card-popup {
+  background: #fff;
+  border-radius: 12px;
+  width: 90vw;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  position: relative;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .ticket-card-popup {
+    width: 95vw;
+    padding: 0px;
+  }
+}
+
+/* 确保弹出层内容不会被底部导航栏遮挡 */
+.tdesign-mobile-popup {
+  z-index: 1000;
+}
+
+/* 优化滚动条样式 */
+.ticket-card-popup::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ticket-card-popup::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.ticket-card-popup::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+

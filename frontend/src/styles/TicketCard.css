@@ -1,0 +1,449 @@
+.ticket-card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.ticket-card {
+  width: 610px;
+  height: 380px;
+  background: #C9E7E9; /* 轻柔的蓝绿色背景 */
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ticket-card * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ticket-order-number {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #e94434; /* 红色订单号 */
+}
+
+.ticket-train-type {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1890ff; /* 蓝色车型标识 */
+}
+
+.ticket-card .ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.ticket-number {
+  color: #333;
+  font-size: 26px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  color: #666;
+}
+
+.ticket-date {
+  text-align: left;
+  margin: 50px 0 24px;
+  font-size: 22px;
+  color: #333;
+}
+
+.ticket-stations {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  flex: 1;
+}
+
+.station {
+  text-align: center;
+  flex: 1;
+}
+
+.ticket-station-name {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.time {
+  font-size: 32px;
+  font-weight: 600;
+  color: #0890ff; /* 蓝色时间 */
+}
+
+.journey-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  padding: 0 24px;
+  position: relative;
+  text-align: center;
+  gap: 0px;
+}
+
+.train-number {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0890ff;
+  margin: 0;
+  padding-bottom: 26px;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.train-number:hover {
+  color: #40a9ff;
+  text-decoration: underline;
+}
+
+.train-number:after {
+  content: "";
+  position: absolute;
+  bottom: 16px;
+  left: -40px;
+  right: -30px;
+  height: 3px;
+  background: #000;
+}
+
+.train-number:before {
+  content: "";
+  position: absolute;
+  bottom: 12px;
+  right: -40px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-left-color: #000;
+  transform: translateX(1px);
+}
+
+.duration {
+  font-size: 22px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: -6px;
+}
+
+.duration:before {
+  font-size: 20px;
+}
+
+.ticket-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 0px;
+}
+
+.seat-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.checking-port-row {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checking-port-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.delay-info-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.seat-info {
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.checking-port {
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+}
+
+.checking-port.empty {
+  height: 24px; /* 保持与有内容时相同的高度 */
+}
+
+.delay-info {
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delay-info:hover {
+  opacity: 0.8;
+}
+
+.delay-info:active {
+  transform: scale(0.95);
+}
+
+.delay-info.delayed {
+  color: #f5222d; /* 红色显示晚点信息 */
+
+  border: 1px solid #57B9F0;
+}
+
+.delay-info.on-time {
+  color: #52c41a; /* 绿色显示正点信息 */
+
+  border: 1px solid #57B9F0;
+}
+
+.price {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.ticket-footer {
+  padding-top: 16px;
+  margin-top: 10px;
+  text-align: center;
+  background-color: #57B9F0;
+  border-radius: 0 0 16px 16px;
+  margin: 0 -24px -24px -24px;
+  padding: 16px 24px;
+}
+
+.ticket-slogan {
+  font-size: 24px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+/* 添加分享提示的样式 */
+.share-hint {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  width: 100%;
+}
+
+/* 在iOS移动端下添加点击效果 */
+@media (hover: none) {
+  .ticket-card {
+    transition: transform 0.2s;
+  }
+  
+  .ticket-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .ticket-card {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 481/300; 
+    padding: 16px;
+    border-radius: 14px;
+  }
+  
+  .ticket-order-number {
+    top: 14px;
+    font-size: 16px;
+  }
+  
+  .ticket-train-type {
+    top: 14px;
+    right: 16px;
+    font-size: 16px;
+  }
+  
+  .ticket-date {
+    margin: 25px 5px 10px;
+    font-size: 16px;
+  }
+  
+  .ticket-station-name {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  
+  .time {
+    font-size: 20px;
+  }
+  
+  .journey-info {
+    width: 100px;
+    padding: 0 12px;
+  }
+  
+  .train-number {
+    font-size: 18px;
+    padding-bottom: 16px;
+  }
+  
+  .train-number:after {
+    bottom: 10px;
+    left: -40px;
+    right: -40px;
+    height: 2px;
+  }
+  
+  .train-number:before {
+    bottom: 5px;
+    right: -50px;
+    border-width: 6px;
+  }
+  
+  .duration {
+    font-size: 14px;
+    gap: 3px;
+    margin-top: -8px;
+  }
+  
+  .ticket-info {
+    flex-direction: column;
+    padding-top: 15px 0px;
+  }
+  
+  .seat-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .seat-info {
+    font-size: 16px;
+  }
+  
+  .checking-port {
+    font-size: 16px;
+  
+    display: block;
+  }
+  
+  .price {
+    font-size: 16px;
+  }
+  
+  .ticket-footer {
+    padding: 10px 16px;
+    margin: 0 -16px -16px -16px;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .ticket-slogan {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+  
+  .share-hint {
+    bottom: -24px;
+    font-size: 12px;
+  }
+  
+  .checking-port-row {
+    margin-top: 8px;
+  }
+  
+  .checking-port {
+    font-size: 14px;
+  }
+  
+  .checking-port.empty {
+    height: 20px;
+  }
+  
+  .delay-info {
+    font-size: 12px;
+    padding: 1px 6px;
+  }
+}
+
+/* 刷新按钮样式 */
+.refresh-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.refresh-button:hover {
+  background-color: #e0e0e0;
+}
+
+.refresh-button:active {
+  transform: scale(0.95);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .refresh-button {
+    bottom: 5px;
+    right: 5px;
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+}

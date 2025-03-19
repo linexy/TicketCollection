@@ -1,0 +1,51 @@
+{
+  "name": "ticket-system",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "init-notifications": "ts-node src/scripts/initNotificationJobs.ts",
+    "init-train-types": "ts-node src/scripts/initTrainTypeUpdateJobs.ts",
+    "import-train-numbers": "ts-node src/scripts/importTrainNumbers.ts"
+  },
+  "dependencies": {
+    "@types/web-push": "^3.6.4",
+    "@types/xlsx": "^0.0.36",
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "cheerio": "^1.0.0",
+    "compression": "^1.8.0",
+    "cors": "^2.8.5",
+    "date-fns": "^3.3.1",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mariadb": "^3.2.3",
+    "node-schedule": "^2.1.1",
+    "puppeteer": "^24.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "sequelize": "^6.35.2",
+    "web-push": "^3.6.7",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/compression": "^1.7.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/helmet": "^4.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^20.11.16",
+    "@types/node-schedule": "^2.1.7",
+    "@types/puppeteer": "^7.0.4",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.18",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

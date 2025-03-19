@@ -1,0 +1,22 @@
+{
+  "name": "车票收藏",
+  "short_name": "车票收藏",
+  "description": "车票收藏",
+  "theme_color": "#f5f5f5",
+  "background_color": "#f5f5f5",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

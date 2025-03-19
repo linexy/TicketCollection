@@ -1,0 +1,164 @@
+.stations-map-container {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.stations-map-container h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.stations-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+
+  overflow: hidden;
+
+}
+
+.stations-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* 隐藏百度地图底部的版权信息和Logo */
+.stations-map .BMap_cpyCtrl {
+  display: none !important;
+}
+
+.stations-map .anchorBL {
+  display: none !important;
+}
+
+/* 隐藏所有百度地图控件 */
+.stations-map .BMap_stdMpCtrl,
+.stations-map .BMap_scaleCtrl,
+.stations-map .BMap_omCtrl,
+.stations-map .BMap_stdMpPan,
+.stations-map .BMap_stdMpZoom,
+.stations-map .BMap_omBtn,
+.stations-map .BMap_stdMpZoomIn,
+.stations-map .BMap_stdMpZoomOut,
+.stations-map .BMap_compass {
+  display: none !important;
+}
+
+.map-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  font-size: 16px;
+  color: #666;
+}
+
+.map-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background-color: #f8f8f8;
+  color: #ff4d4f;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.map-info-window h4 {
+  margin: 0 0 8px 0;
+  padding: 0;
+  font-size: 16px;
+  color: #1890ff;
+}
+
+.map-info-window p {
+  margin: 4px 0;
+  padding: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .stations-map-wrapper {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stations-map-wrapper {
+    height: 250px;
+  }
+}
+
+/* 全屏按钮样式 */
+.fullscreen-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.fullscreen-button:hover {
+  background-color: #f0f0f0;
+}
+
+.fullscreen-button svg {
+  width: 20px;
+  height: 20px;
+  fill: #333;
+}
+
+/* 全屏模式下的样式 */
+.stations-map-wrapper.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  margin: 0;
+  border-radius: 0;
+}
+
+.stations-map-wrapper.fullscreen .stations-map {
+  height: 100%;
+}
+
+.exit-fullscreen-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.exit-fullscreen-button svg {
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+  fill: #333;
+} 

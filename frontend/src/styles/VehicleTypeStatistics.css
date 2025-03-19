@@ -1,0 +1,211 @@
+.vehicle-type-statistics-container {
+  padding: 0px 0px;
+  background-color: #f5f5f5;
+
+}
+
+.vehicle-type-statistics-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+  color: #666;
+  padding: 0 8px;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.vehicle-type-statistics-tabs {
+  display: flex;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.vehicle-type-statistics-tabs button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.vehicle-type-statistics-tabs button.active {
+  background-color: #1677ff;
+  color: white;
+}
+
+.vehicle-type-statistics-tabs button:hover:not(.active) {
+  background-color: #f5f5f5;
+}
+
+.vehicle-type-statistics-content {
+  margin: 16px;
+}
+
+/* 车型条目样式 */
+.vehicle-type-section {
+  margin: 12px;
+}
+
+.vehicle-type-summary {
+  margin-bottom: 16px;
+}
+
+.vehicle-type-summary-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.vehicle-type-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vehicle-type-item {
+  width: 100%;
+}
+
+.vehicle-type-content {
+  width: 100%;
+}
+
+.vehicle-type-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.vehicle-type-rank {
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 14px;
+  min-width: 50px;
+}
+
+.top-1-label {
+  color: #19be6b;
+}
+
+.top-2-label {
+  color: #7b5af7;
+}
+
+.top-3-label {
+  color: #1890ff;
+}
+
+.normal-label {
+  color: #666;
+}
+
+.vehicle-type-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.vehicle-type-bar-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.vehicle-type-bar-container {
+  flex: 1;
+  height: 12px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-right: 8px;
+}
+
+.vehicle-type-bar {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.gradient-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #5b8def 100%);
+}
+
+.top-1-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #19be6b 100%);
+}
+
+.top-2-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #7b5af7 100%);
+}
+
+.top-3-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #1890ff 100%);
+}
+
+.vehicle-type-count {
+  font-size: 14px;
+  color: #666;
+  min-width: 40px;
+  text-align: right;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 16px;
+  color: #999;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .vehicle-type-statistics-container {
+    padding: 0px;
+    margin-top: 0px;
+  }
+  
+  .vehicle-type-statistics-header {
+    padding: 30px 12px;
+    background: #f5f5f5;
+  }
+  
+  .vehicle-type-statistics-content {
+    padding-bottom: 60px;
+  }
+  
+  .vehicle-type-chart-container {
+    padding: 10px 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+  }
+} 

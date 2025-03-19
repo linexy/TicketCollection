@@ -1,0 +1,219 @@
+.station-statistics-container {
+  padding: 0px 0px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.station-statistics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  margin-right: 8px;
+  padding: 0 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.station-charts {
+  background-color: #fffff8;
+}
+
+.station-statistics-tabs {
+  display: flex;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.station-statistics-tabs button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.station-statistics-tabs button.active {
+  background-color: #1677ff;
+  color: white;
+}
+
+.station-statistics-tabs button:hover:not(.active) {
+  background-color: #f5f5f5;
+}
+
+.station-statistics-content {
+  margin: 5px;
+}
+
+/* 车站条目样式 */
+.station-section {
+  margin-top: 12px;
+}
+
+.station-summary {
+  margin-bottom: 16px;
+}
+
+.station-summary-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.station-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.station-item {
+  width: 100%;
+}
+
+.station-content {
+  width: 100%;
+}
+
+.station-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.station-rank {
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 14px;
+  min-width: 50px;
+}
+
+.top-1-label {
+  color: #19be6b;
+}
+
+.top-2-label {
+  color: #7b5af7;
+}
+
+.top-3-label {
+  color: #1890ff;
+}
+
+.normal-label {
+  color: #666;
+}
+
+.station-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.station-bar-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.station-bar-container {
+  flex: 1;
+  height: 12px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-right: 8px;
+}
+
+.station-bar {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.gradient-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #5b8def 100%);
+}
+
+.top-1-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #19be6b 100%);
+}
+
+.top-2-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #7b5af7 100%);
+}
+
+.top-3-bar {
+  background: linear-gradient(90deg, #36d1dc 0%, #1890ff 100%);
+}
+
+.station-count {
+  font-size: 14px;
+  color: #666;
+  min-width: 40px;
+  text-align: right;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 16px;
+  color: #999;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 16px;
+}
+
+.station-chart-container {
+  background-color: #fff;
+  margin: 16px;
+
+}
+
+.station-chart-container h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .station-statistics-container {
+    padding: 0px;
+    margin-top: 0px;
+  }
+  
+  .station-statistics-header {
+    padding: 0 12px;
+  }
+  
+  .station-statistics-content {
+    padding-bottom: 20px;
+  }
+  
+  .station-chart-container {
+    padding: 10px 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+} 
