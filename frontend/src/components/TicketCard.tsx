@@ -22,7 +22,6 @@ interface TicketCardProps {
     seatNo: string;
     seatType: string;
     orderNo: string;
-    checkingPort?: string;
   };
   onClose: () => void;
   disableShare?: boolean;

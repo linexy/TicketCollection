@@ -49,7 +49,6 @@ interface TrainTicket {
   seatNo: string;
   orderNo: string;
   trainType?: string;
-  checkingPort?: string;
   baseTicket: BaseTicket;
 }
 

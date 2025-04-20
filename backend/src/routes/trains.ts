@@ -1,6 +1,6 @@
 import express from 'express';
 import { fetchAndSaveTrains, getAllTrains, searchTrains, getTrainStopInfo, getStopInfoParams, cacheTimetableForAllTickets } from '../services/trainService';
-import { updateCheckingPort, scheduleCheckingPortUpdates } from '../services/checkingPortService';
+//import { updateCheckingPort, scheduleCheckingPortUpdates } from '../services/checkingPortService';
 
 const router = express.Router();
 

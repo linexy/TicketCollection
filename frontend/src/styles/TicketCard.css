@@ -179,18 +179,6 @@
   width: 100%;
 }
 
-.checking-port-row {
-  margin-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.checking-port-container {
-  flex: 1;
-  min-width: 0;
-}
-
 .delay-info-container {
   display: flex;
   justify-content: flex-end;
@@ -200,16 +188,6 @@
   color: #333;
   font-size: 16px;
   font-weight: 600;
-}
-
-.checking-port {
-  font-size: 16px;
-  font-weight: 500;
-  display: block;
-}
-
-.checking-port.empty {
-  height: 24px; /* 保持与有内容时相同的高度 */
 }
 
 .delay-info {
@@ -369,12 +347,6 @@
     font-size: 16px;
   }
   
-  .checking-port {
-    font-size: 16px;
-  
-    display: block;
-  }
-  
   .price {
     font-size: 16px;
   }
@@ -393,18 +365,6 @@
   .share-hint {
     bottom: -24px;
     font-size: 12px;
-  }
-  
-  .checking-port-row {
-    margin-top: 8px;
-  }
-  
-  .checking-port {
-    font-size: 14px;
-  }
-  
-  .checking-port.empty {
-    height: 20px;
   }
   
   .delay-info {

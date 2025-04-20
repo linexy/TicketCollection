@@ -10,7 +10,6 @@ export class TrainTicket extends Model {
   public seatNo!: string;
   public orderNo!: string;
   public trainType!: string;
-  public checkingPort!: string;
   public baseTicketId!: number;
   public baseTicket!: BaseTicket;
 }
@@ -42,10 +41,6 @@ TrainTicket.init({
     allowNull: true  // 允许为空
   },
   trainType: {
-    type: DataTypes.STRING(50),
-    allowNull: true  // 允许为空
-  },
-  checkingPort: {
     type: DataTypes.STRING(50),
     allowNull: true  // 允许为空
   },
