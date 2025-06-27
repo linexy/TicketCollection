@@ -7,11 +7,11 @@ async function createAdmin() {
     await sequelize.sync();
     
     const existingAdmin = await User.findOne({ 
-      where: { username: 'linexy' } 
+      where: { username: 'admin' } 
     });
     
     if (!existingAdmin) {
-      const hashedPassword = await bcrypt.hash('Ljs@1236547', 10);
+      const hashedPassword = await bcrypt.hash('ceuimima', 10);
       await User.create({
         username: 'linexy',
         password: hashedPassword
